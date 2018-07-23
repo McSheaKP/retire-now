@@ -9,18 +9,18 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChartsModule } from 'ng2-charts';
-import {DashboardPage } from '../pages/dashboard/dashboard';
+//import {DashboardPage } from '../pages/dashboard/dashboard';
 //import {LandingPage } from '../pages/landing/landing';
-import { RegisterPage } from '../pages/register/register'
+//import { RegisterPage } from '../pages/register/register'
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    DashboardPage,
+   // DashboardPage,
    // LandingPage,
-    RegisterPage
+    //RegisterPage
 
   ],
   imports: [
@@ -33,9 +33,9 @@ import { RegisterPage } from '../pages/register/register'
     MyApp,
     HomePage,
     ListPage,
-    DashboardPage,
+   // DashboardPage,
    // LandingPage,
-    RegisterPage
+    //RegisterPage
   ],
   providers: [
     StatusBar,
