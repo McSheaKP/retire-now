@@ -15,20 +15,24 @@
 <ion-content padding>
   
   <ion-list>
-    <ion-list-header>Name</ion-list-header>
-    <ion-item>"User's Name"</ion-item>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  
   </ion-list>
   
-  <ion-list>
-    <ion-list-header>Email</ion-list-header>
-    <ion-item>"User's Email"</ion-item>
-  </ion-list>
-  
-  <ion-list>
-    <ion-list-header> Password </ion-list-header>
-    <ion-item>"User's Password?"</ion-item>
-  </ion-list>
-  
-  <button ion-button>Logout</button>
+  <button ion-button full >Logout</button>
 
 </ion-content>
