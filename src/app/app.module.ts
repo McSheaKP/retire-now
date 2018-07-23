@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChartsModule } from 'ng2-charts';
 import {DashboardPage } from '../pages/dashboard/dashboard';
 import {LandingPage } from '../pages/landing/landing';
+import { RegisterPage } from '../pages/register/register'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {LandingPage } from '../pages/landing/landing';
     HomePage,
     ListPage,
     DashboardPage,
-    LandingPage
+    LandingPage,
+    RegisterPage
 
   ],
   imports: [
@@ -32,7 +34,8 @@ import {LandingPage } from '../pages/landing/landing';
     HomePage,
     ListPage,
     DashboardPage,
-    LandingPage
+    LandingPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
