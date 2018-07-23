@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
+import { RegisterPage } from '../register/register';
+
 
 /**
  * Generated class for the LandingPage page.
@@ -21,5 +24,14 @@ export class LandingPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LandingPage');
   }
+
+  LogdashRoute () {
+    this.navCtrl.push(DashboardPage);
+
+    }
+
+   Regroute (){
+    this.navCtrl.push(RegisterPage);
+   } 
 
 }

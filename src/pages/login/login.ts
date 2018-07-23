@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,7 +20,10 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+    console.log('ionViewDidLoad LoginPage');        
+     }
+
+
+  
 
 }

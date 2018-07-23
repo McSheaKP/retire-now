@@ -9,12 +9,17 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChartsModule } from 'ng2-charts';
+import {DashboardPage } from '../pages/dashboard/dashboard';
+import {LandingPage } from '../pages/landing/landing';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    DashboardPage,
+    LandingPage
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,9 @@ import { ChartsModule } from 'ng2-charts';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    DashboardPage,
+    LandingPage
   ],
   providers: [
     StatusBar,
