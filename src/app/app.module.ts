@@ -10,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChartsModule } from 'ng2-charts';
 import {DashboardPage } from '../pages/dashboard/dashboard';
-import {LandingPage } from '../pages/landing/landing';
+//import {LandingPage } from '../pages/landing/landing';
 import { RegisterPage } from '../pages/register/register'
 
 @NgModule({
@@ -19,7 +19,7 @@ import { RegisterPage } from '../pages/register/register'
     HomePage,
     ListPage,
     DashboardPage,
-    LandingPage,
+   // LandingPage,
     RegisterPage
 
   ],
@@ -34,7 +34,7 @@ import { RegisterPage } from '../pages/register/register'
     HomePage,
     ListPage,
     DashboardPage,
-    LandingPage,
+   // LandingPage,
     RegisterPage
   ],
   providers: [
