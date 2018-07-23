@@ -30,8 +30,8 @@ export class LandingPage {
 
     }
 
-   Regroute (){
-    this.navCtrl.push(RegisterPage);
-   } 
-
+    Regroute (){
+      this.navCtrl.push(RegisterPage);
+     } 
+  
 }
