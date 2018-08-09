@@ -35,7 +35,6 @@ export class RegisterPage {
       password: ['', Validators.required],
       vpassword: ['', Validators.required],
       dob: ['', Validators.required],
-
     });
 
   }
@@ -51,7 +50,14 @@ export class RegisterPage {
 
   //form builder function that allows for register input to become validated
   onForm() {
-    console.log(this.registerInput.value)
+    console.log('Form', this.registerInput.value);
+    console.log('DOB field', this.registerInput.get('dob'));
+    // check that form is valid
+    // if invalid do something
+    // if valid, run onRegister();
+    // display any error handling if backend doesn't pass
+    // else complete registration and route
+    return this.registerInput.get('dob');
   }
 
   //function to register a user

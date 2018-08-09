@@ -129,6 +129,13 @@
                     [(ngModel)]="myDate"></ion-datetime>
                   <ion-icon small name="medical" color="danger" item-right></ion-icon>
                 </ion-item>
+                <ion-item no-lines no-padding
+                  *ngIf="registerInput.get('dob').hasError('required') && registerInput.get('dob').touched">
+                  <div no-lines class="error"
+                    *ngIf="registerInput.get('dob').hasError('required') && registerInput.get('dob').touched">
+                    DOB is required!
+                  </div>
+                </ion-item>
               </ion-list>
               
               <!-- submit button to deploy function onRegister  of a new user -->
@@ -141,7 +148,7 @@
     </ion-row>
     <ion-row justify-content-center padding-horizontal>
       <ion-col>
-        <button ion-button icon-end block full (click)="onRegister()">Register</button>
+        <button ion-button icon-end block full (click)="onForm()">Register</button>
       </ion-col>
     </ion-row>
   </ion-grid>
