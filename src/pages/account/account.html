@@ -34,13 +34,27 @@
                   <ion-label col-width-50>{{viewName.userData.email}}</ion-label>
                 </ion-item>
               </ion-list>
+
+              <ion-list>
+
+                  <ion-item>
+                    <ion-label floating>Old Paswword</ion-label>
+                    <ion-input type="text"  [(ngModel)]="this.userPW.oldPassword"></ion-input>
+                  </ion-item>
+                
+                  <ion-item>
+                    <ion-label floating>New Password</ion-label>
+                    <ion-input type="password" [(ngModel)]="this.userPW.newPassword"></ion-input>
+                  </ion-item>
+                
+                </ion-list>
             </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
     <ion-row justify-content-center padding-horizontal>
       <ion-col>
-        <button ion-button icon-end block full>Change Password</button>
+        <button ion-button icon-end block full (click)="passwordCH()">Change Password</button>
         <button ion-button icon-end block full margin-vertical (click)="viewTutorial()">View Tutorial</button>
         <button ion-button icon-end block full (click)="logout()">Logout</button>
       </ion-col>

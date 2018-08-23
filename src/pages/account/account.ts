@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserProvider} from '../../providers/user/user';
+
 
 
 /**
@@ -19,27 +20,29 @@ export class AccountPage {
 
   data:any;
   viewName:any;
+  userPW:any ={
+    oldPassword:"",
+    newPassword:""
+    
+  }
   
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams, 
-              private viewCtrl: ViewController, 
-              private appCtrl:App,
-              public _user: UserProvider
-            ) {
-              this.extRact()
-            }
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public _user: UserProvider) {
+
+    this.extRact();
+   //this.passwordCH();
+  }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad AccountPage');
   }
 
   viewTutorial(){
-    this.appCtrl.getRootNav().push('TutorialPage');
+    this.navCtrl.push('TutorialPage')
   }
 
   logout(){
-    this.appCtrl.getRootNav().push('LandingPage');
-    this._user.onLogout("user"); 
+    this.navCtrl.push('LandingPage')
   }
 
 extRact(){
@@ -48,6 +51,14 @@ extRact(){
   console.log(this.viewName);
   console.log(this.viewName.userData.firstName)
 }
-  
+ 
+
+  passwordCH(){
+    this._user.changePW(this.viewName.userData.id,this.userPW.oldPassword,this.userPW.newPassword)
+    .subscribe(( res:any ) =>{
+      console.log("change",res)
+       })
+
+   }
 }
 

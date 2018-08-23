@@ -31,6 +31,11 @@ export class UserProvider {
   logOutURL:string='logout/'
   //loopback add on to access profile model
   profileURL:string='profiles';
+  changePWURL:string = 'change-password';
+  //https://sandiego1.herokuapp.com/api/appUsers/change-password
+  // userID:any;
+  // oldPW:any;
+  // newPW:any;
 
   isLoggedIn: boolean = false; 
 
@@ -133,4 +138,12 @@ export class UserProvider {
   }
 
 
+
+  changePW(userId,oldPassword:any,newPW:any){
+   
+
+    return this.http.post(this.baseURL + this.regURL + this.changePWURL, userId, oldPassword, newPW);
+  }
+
 }
+
