@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {UserProvider} from '../../providers/user/user';
-
+import {DashboardPage} from '../dashboard/dashboard';
 /**
  * Generated class for the ResultsPage page.
  *
@@ -32,6 +32,7 @@ export class ResultsPage {
     this.viewCtrl.dismiss();
   }
 
+
   barChart: any;
 
   toggleChart: boolean = false; //used to load chart with data after page load
@@ -61,7 +62,7 @@ export class ResultsPage {
 
   //On loading of the chart, data from the backend server will populate 
   //barChartLabels, and barChartData, see docs for more information
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.toggleChart = false;
     console.log('ionViewDidLoad DashboardPage');
     this._user.getProfileResults()

@@ -61,11 +61,11 @@ export class InputPage {
     let userData = {
       fraMonths: 0,
       FRAAge: 0,
-      FRADate: "2022-05-20",
-      profileName: "profile1",
-      myFRAAmt: 1000,
-      myDOR: "2020-01-20",
-      myDOB: "1965-01-15"
+      FRADate: "",
+      profileName: "",
+      myFRAAmt: 0,
+      myDOR: "",
+      myDOB: ""
     }
     let userObject: object = {};
 
@@ -99,7 +99,8 @@ export class InputPage {
               .subscribe((res: any) => {
                 console.log("this is the response from posting profile", res);
                 sessionStorage.setItem("profileId", res.id)
-                this.navCtrl.setRoot('ResultsPage');
+                this.inputForm.reset();
+                this.navCtrl.push('ResultsPage', {isBtn: true});
               })
               , (err: any) => {
               //add error handling here
@@ -108,16 +109,12 @@ export class InputPage {
           })
       })
 
-    //take the user object data and push it into a data object for sending to backend
-    //take the user input and the combined data from the get request and build the userData object
-    //send the userData object to the backend via the called remotemethod
-    //post.remoteMethod(userData);
-
     console.log("On submit worked");
     let userId = sessionStorage.getItem("userId")
     console.log("session storage id", userId)
   }
 
+  
 
   logType() {
     if (this.inputForm.status === "VALID" && this.inputForm.touched) {
