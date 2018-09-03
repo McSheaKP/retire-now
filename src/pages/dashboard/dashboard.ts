@@ -56,7 +56,7 @@ export class DashboardPage {
   }
 // shows result page as a modal when a profile is clicked 
   presentModal(id) {
-    let modal = this.modalCtrl.create(ResultsPage, {isModal: true});
+    let modal = this.modalCtrl.create(ResultsPage, {isBtn: true, isModal: true});
     sessionStorage.setItem("profileId", id)
     modal.present();
   }
