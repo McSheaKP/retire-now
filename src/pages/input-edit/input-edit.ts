@@ -41,19 +41,68 @@ export class InputEditPage {
   }
 
   onSubmit(){
-    this._user.profileDataDB.name = this.profileName  ;
-    this._user.profileDataDB.fraAmount = this.fra$;
-    this._user.profileDataDB.retireDate = this.dor;
-    this._user.updateUserProfile()
-        .subscribe((res:any) => {
-        console.log("this is the response from updating the profile", res);
-        sessionStorage.setItem("profileId", res.id)
-        this.navCtrl.setRoot('ResultsPage', {isBtn: true});
-        })
-        , (err:any) => {
+    let userData = {
+      fraMonths: 0,
+      FRAAge: 0,
+      FRADate: "",
+      profileName: "",
+      myFRAAmt: 0,
+      myDOR: "",
+      myDOB: "",
+    }
+    let userObject = {
+      name: "",
+      fraAmount: 0,
+      retireAge: 0,
+      monthlyAmount: 0,
+      retireDate: "",
+      barChartLabels: [],
+      chart: [],
+      id: "",
+      userId: ""
+    };
+    userData.myFRAAmt = this.inputForm.value.fra$;
+    userData.profileName = this.inputForm.value.profile;
+    userData.myDOR = this.inputForm.value.dor;
+
+    this._user.getUserData()
+      .subscribe((res: any) => {
+        console.log("this is the response from get request", res);
+        userData.fraMonths = res.totalFRAMonths;
+        userData.FRAAge = res.fraAge;
+        userData.FRADate = res.fraDate;
+        userData.myDOB = res.dob;
+
+      }, (err: any) => {
         //add error handling here
-        }
+      }, () => {
+        //
+        console.log(userData)
+        this._user.runRetireNowCalc(userData)
+          .subscribe((res: any) => {
+            userObject = res;
+          }, (err: any) => {
+            //add error handling here
+          }, () => {
+            console.log(userObject, "this is the userObject to pass into profile datadb");
+            
+            this._user.updateUserProfile(userObject)
+              .subscribe((res:any) => {
+              console.log("this is the response from updating the profile", res);
+              sessionStorage.setItem("profileId", res.id)
+              this.navCtrl.setRoot('ResultsPage', {isBtn: true});
+              })
+
+              , (err:any) => {
+              //add error handling here
+              }
+
+          })
+      })
   }
+
+ 
+
 
   logType(){
 

@@ -24,7 +24,7 @@ export class UserProvider {
   //base URL to call loopback api
   baseURL:string= ENV.url;
   //loopback add on to register a user
-  regURL:string='appUsers/';
+  appUsers:string='appUsers/';
   //loopback add on to login in a already registered user
   logInURL:string='login';
   //loopback add on to logout an user
@@ -39,6 +39,7 @@ export class UserProvider {
   //register call to create an account and calculate appUser FRA info
   onReg(user){
     console.log("user.dob", user.dob)
+    console.log("this is the user data", user)
     this.userDOB = user.dob; 
     let totalFRAMonths;
     let fraAge; 
@@ -74,13 +75,13 @@ export class UserProvider {
     user.totalFRAMonths = totalFRAMonths; 
     user.fraAge = fraAge; 
     user.fraDate = fraDate; 
-    return this.http.post(this.baseURL + this.regURL, user)
+    return this.http.post(this.baseURL + this.appUsers, user)
   };
 
   //login call after a user has registered 
   onLog(login){
     this.isLoggedIn = true; 
-    return this.http.post(this.baseURL + this.regURL + this.logInURL, login)
+    return this.http.post(this.baseURL + this.appUsers + this.logInURL, login)
   };
 
 minDOR: any;
@@ -116,7 +117,7 @@ newUserInputDORCalc(){
     //sessionStorage.setItem("userId")
     let userId = sessionStorage.getItem("userId");
     let token = sessionStorage.getItem("token");
-    return this.http.get(this.baseURL + this.regURL + userId + "?access_token=" + token);
+    return this.http.get(this.baseURL + this.appUsers + userId + "?access_token=" + token);
   }
 
   //Takes in assembled userData object from input page and returns a profile lb model object
@@ -129,27 +130,31 @@ newUserInputDORCalc(){
   postProfile(userObject){
     let userId = sessionStorage.getItem("userId");
     console.log("sending user profile post:", userObject);
-    return this.http.post(this.baseURL + this.regURL + userId + "/profiles", userObject);
+    return this.http.post(this.baseURL + this.appUsers + userId + "/profiles", userObject);
   }
 
   //Returns all of the respective user profiles related to the user
   getUserProfiles(){
     let userId = sessionStorage.getItem("userId");
-    return this.http.get(this.baseURL + this.regURL + userId + "/profiles/")
+    return this.http.get(this.baseURL + this.appUsers + userId + "/profiles/")
    }
 
   //Updates the profile of a user with edited data 
-  updateUserProfile(){  
+  updateUserProfile(userObject){  
     let userId = sessionStorage.getItem("userId");
     let profileId = this.profileDataDB.id;
-    return this.http.put(this.baseURL + this.regURL + userId + "/profiles/" + profileId, this.profileDataDB);
+    userObject.userId = userId;
+    userObject.id = profileId;
+    console.log(this.profileDataDB, "this is the profiledatadb")
+    console.log(userObject, "this is the data being pushed to update")
+    return this.http.put(this.baseURL + this.appUsers + userId + "/profiles/" + profileId, userObject);
   }
 
   //deletes a user profile with userId to identify the user, and id to identify the profile
   deleteUserProfile(id){
-     let userId = sessionStorage.getItem("userId");
-    return this.http.delete(this.baseURL + this.regURL + userId + "/profiles/" + id);
-   }
+    let userId = sessionStorage.getItem("userId");
+    return this.http.delete(this.baseURL + this.appUsers + userId + "/profiles/" + id);
+  }
   
   //Takes in a user id and posts to the backend. Also clears sessions storage.
   onLogout(user){
@@ -157,14 +162,14 @@ newUserInputDORCalc(){
     this.isLoggedIn = false; 
     console.log("onLogout", user); 
     sessionStorage.clear(); 
-    return this.http.post(this.baseURL + this.regURL + this.logOutURL + "?access_token" + token, user)
+    return this.http.post(this.baseURL + this.appUsers + this.logOutURL + "?access_token" + token, user)
   }
 
   //Returns a profile with userId to identify the user and profileId to identify the profile
   getProfileResults(){
     let userId = sessionStorage.getItem("userId");
     let profileId = sessionStorage.getItem("profileId");
-    return this.http.get(this.baseURL + this.regURL + userId + "/profiles/" + profileId)
+    return this.http.get(this.baseURL + this.appUsers + userId + "/profiles/" + profileId)
   }
 
 
